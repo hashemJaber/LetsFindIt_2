@@ -14,6 +14,7 @@ export default function App() {
    setRef(!ref);
    
   },[strore.items.length])
+  const [filter,setFilter]=React.useState({item});
   
   const [globalRef,setGloabalRef]=React.useState(false);
 const [user,setUser]=React.useState(authStorage.getToken());

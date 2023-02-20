@@ -5,6 +5,7 @@ import colors from '../colors';
 import Button from '../componants/ Button';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import AppPicker from '../componants/AppPicker';
+import listings from '../api/listings';
 
 
 /**
@@ -69,8 +70,17 @@ renderItem={({item})=> (
 
 <Button  title="Apply" onPress={
   ()=>{
-  
-  setModal(false)
+  // Filterd_listings=[];
+  for(i=0;i<2;i++){
+
+    //if(filter[i]){
+
+
+
+   // }
+  }
+  action();
+  setModal(false);
   
   }}   ></Button>
 

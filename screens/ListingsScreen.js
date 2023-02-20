@@ -44,6 +44,8 @@ const flags=["lost-items.png","surprise.png","camera.png","airpods.png","car.png
         const [loading,setLoading]= useState(false);
 
         const [reshresh,setRefresh]= useState(false);
+
+        const [filter_values,setFilter]= useState([null]);
       
         
 function filter(argument,items){
@@ -61,7 +63,7 @@ setItems(newItems);
     async function getListings(){
       setLoading(true);
       const res= await  listings.getListings();
-setLoading(false);
+      setLoading(false);
       console.log(res.data[0]);
 
 
