@@ -6,7 +6,7 @@ import Button from '../componants/ Button';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import AppPicker from '../componants/AppPicker';
 import listings from '../api/listings';
-
+import AuthContext from '../AuthContext';
 
 /**
  * 
@@ -29,7 +29,10 @@ export default function FilteringScreen(
     const [modal,setModal]=React.useState(false);
     const [placeholder2,setPlaceholder]=React.useState(placeholder);
     const [argument,setArgument]=React.useState(null);
+    const context = React.useContext(AuthContext);
+    
 
+    
   return (
     
     <>
@@ -55,34 +58,47 @@ export default function FilteringScreen(
 
 <Button title="Close" onPress={()=>{setModal(false)}}   ></Button>
 
+<AppPicker  action={(value)=>{context.setFilter({
+  "categoryId": value,
+  "date_of_posting": context.filter.date_of_posting,
+  "description": null,
+  "location":  {
+    "latitude": null,
+    "longitude": null,
+  },
+  "price": 2,
+  "title": null,
+})}} placeholder={"Category"} ></AppPicker>
 
-<FlatList 
-style={{width:'100%',height:'100%'}}
-contentContainerStyle={{justifyContent:'space-between'}}
-data={data} 
-keyExtractor={(item)=>{item.tag.toString()}} 
+<AppPicker  action={(value)=>{context.setFilter({
+  "categoryId": context.filter.categoryId,
+  "date_of_posting": value,
+  "description": null,
+  "location":  {
+    "latitude": null,
+    "longitude": null,
+  },
+  "price": 2,
+  "title": null,
+})}} placeholder={"date of posting"} ></AppPicker>
 
-renderItem={({item})=> ( 
-  
-<AppPicker placeholder={"filter"} ></AppPicker>
+<AppPicker  data={[{id:1, tag:'Found' },
+  {id:2,tag:'Lost' }]} action={(value)=>{context.setFilter({
+  "categoryId": context.filter.categoryId,
+  "date_of_posting": value,
+  "description": null,
+  "location":  {
+    "latitude": null,
+    "longitude": null,
+  },
+  "price": 2,
+  "title": null,
+})}} placeholder={"Lost or Found"} ></AppPicker>
 
-)} refresh={true} />
+<Button  title="Apply" onPress={()=>{
 
-<Button  title="Apply" onPress={
-  ()=>{
-  // Filterd_listings=[];
-  for(i=0;i<2;i++){
-
-    //if(filter[i]){
-
-
-
-   // }
-  }
-  action();
-  setModal(false);
-  
-  }}   ></Button>
+  console.log(context.filter);
+}}   ></Button>
 
 
 </SafeAreaView>

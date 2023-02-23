@@ -36,13 +36,15 @@ const [filter,setFilter]=React.useState({title:null,price:null,categoryId:null,d
 
 const [globalRef,setGloabalRef]=React.useState(false);
 const [user,setUser]=React.useState(authStorage.getToken());
+
+
 const [refresh,setRefresh]=React.useState(false);
 setTimeout(()=>{
 setRefresh(!refresh);
 
 },2000);
 return (
-<AuthContext.Provider value={{user,setUser,refresh,setRefresh,globalRef,setGloabalRef}}>
+<AuthContext.Provider value={{user,setUser,refresh,setRefresh,globalRef,setGloabalRef,filter,setFilter}}>
 <NavigationContainer >
 { <AppNavigator/> }
 </NavigationContainer>

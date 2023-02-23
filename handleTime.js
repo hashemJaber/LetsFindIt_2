@@ -57,7 +57,6 @@ export default function handleTime(seconds){
                 return Math.floor(years)+" years ago"
                 }   
     
-         
-         
-    return secondsFactory(Math.floor(time));
-    }
+         return secondsFactory(Math.floor(time));
+    
+        }
