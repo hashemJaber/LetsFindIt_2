@@ -32,7 +32,7 @@ export default function AppPicker(
    {id:9,tag:'Books',iconName:'book-open' },
    {id:10,tag:'Bag',iconName:'bag-personal' },
    {id:11,tag:'Keys',iconName:'key' },
-   {id:12,tag:'Other',iconName:'zoom' }] }) {
+   {id:12,tag:'Other',iconName:null }] }) {
 
     const [modal,setModal]=React.useState(false);
     const [placeholder2,setPlaceholder]=React.useState(placeholder);
@@ -77,10 +77,11 @@ renderItem={({item})=> (
 <Text style={{marginBottom:12, fontSize:20}} 
 
 onPress={()=>{
-const temp=item.id;
+const temp=item?.id;
 console.log("this is the tag: "+item.tag+" with id "+temp);
 console.log("assinging item done");
-setPlaceholder(item.tag);  action(temp); setModal(false); 
+setPlaceholder(item.tag);  
+action(temp? temp: "error" ); setModal(false); 
 
 }} >{item.tag}</Text>
 </TouchableOpacity>

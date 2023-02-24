@@ -70,7 +70,8 @@ export default function FilteringScreen(
   "title": null,
 })}} placeholder={"Category"} ></AppPicker>
 
-<AppPicker  action={(value)=>{context.setFilter({
+<AppPicker data={[{id:1, tag:'1 day ago' },
+  {id:2,tag:'2 days ago' },{id:3,tag:'1 week ago' },{id:4,tag:'2 weeks ago' }]}  action={(value)=>{context.setFilter({
   "categoryId": context.filter.categoryId,
   "date_of_posting": value,
   "description": null,
